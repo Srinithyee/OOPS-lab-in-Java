@@ -1,0 +1,473 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang16393{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.17134}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 import java.io.;\par
+class Box\par
+\{\par
+\tab private double width;\par
+\tab private double height;\par
+\tab private double depth;\par
+\tab Box(Box ob)\par
+\tab\{\par
+\tab\tab width=ob.width;\par
+\tab\tab height=ob.height;\par
+\tab\tab depth=ob.depth;\par
+\tab\}\par
+\tab Box(double w,double h,double d)\par
+\tab\{\par
+\tab\tab width=w;depth=d;height=h;\par
+\tab\}\par
+\tab Box()\par
+\tab\{\par
+\tab\tab width=0;\par
+\tab\tab height=0;\par
+\tab\tab depth=0;\par
+\tab\}\par
+\tab Box(double len)\par
+\tab\{\par
+\tab\tab width=heightdepthlen;\par
+\tab\}\par
+\tab double volume()\par
+\tab\{\par
+\tab\tab return(widthheightdepth);\par
+\tab\}\par
+\}\par
+\par
+class BoxWeight extends Box\{\par
+\tab double weight;\par
+\tab BoxWeight(BoxWeight ob)\par
+\tab\{\par
+\tab\tab super(ob);\par
+\tab\tab weight=ob.weight;\par
+\tab\}\par
+\tab BoxWeight(double w,double h,double d,double m)\par
+\tab\{\par
+\tab\tab super(w,h,d);\par
+\tab\tab weight=m;\par
+\tab\}\par
+\tab BoxWeight()\par
+\tab\{\par
+\tab\tab super();\par
+\tab\tab weight=0;\par
+\tab\}\par
+\tab BoxWeight(double len,double m)\par
+\tab\{\par
+\tab\tab super(len);\par
+\tab\tab weight=m;\par
+\tab\}\par
+\}\par
+class BoxShipment extends BoxWeight\par
+\{\par
+\tab double cost;\par
+\tab BoxShipment(BoxShipment ob)\par
+\tab\{\par
+\tab\tab super(ob);\par
+\tab\tab cost=ob.cost;\par
+\tab BoxShipment(double w,double h,double d,double m,double c)\par
+\tab\{\par
+\tab\tab super(w,h,d,m);\par
+\tab\tab cost=c;\par
+\tab\}\par
+\tab BoxShipment()\par
+\tab\{\par
+\tab\tab super();\par
+\tab\tab cost=0;\par
+\tab\}\par
+\tab BoxShipment(double len,double m,double c)\{\par
+\tab\tab super(len,m);\par
+\tab\tab cost=c;\par
+\tab\}\par
+\}\par
+\par
+public Class call\{\par
+\tab public static void main(String args[])throws IOException\par
+\tab\{\tab\par
+\tab\tab double a,b,c;\par
+\tab\tab BufferedReader in =new BufferedReader(new InputStreamReader(System.in));\par
+\tab\tab System.out.println(Enter the width of the box);\par
+\tab\tab a=Double.parseDouble(in.readLine());\tab\tab\par
+\tab\tab System.out.println(Enter the height of the box);\par
+\tab\tab b=Double.parseDouble(in.readLine());\par
+\tab\tab System.out.println(Enter the depth of the box);\par
+\tab\tab c=Double.parseDouble(in.readLine());\par
+\tab\tab System.out.println(Enter the weight of the box);\par
+\tab\tab d=Double.parseDouble(in.readLine());\par
+\tab\tab System.out.println(Enter the cost for unti shipping);\par
+\tab\tab e=Double.parseDouble(in.readLine());\par
+\tab\tab BoxShipment obj=new BoxShipment(a,b,c,d,e);\par
+\tab\tab double vol;\par
+\tab\tab vol=obj.vol;\par
+\tab\tab System.out.println(The volume of the box is +vol);\par
+\tab\tab System.out.println(The weight of the box is +obj.weight);\tab\par
+\tab\tab System.out.println(The cost of the box is +obj.cost);\par
+\tab\}\par
+\}\tab\par
+***************************************************************************\par
+import java.io.*;\par
+class Employee\par
+\{\par
+\tab  String name;\par
+\tab  int emp_id;\par
+\tab  String address;\par
+\tab  String email;\par
+\tab  long numb;\par
+\par
+\tab Employee(String n,int e,String a,String em,long no)\par
+\tab\{\par
+\tab\tab name=n;\par
+\tab\tab emp_id=e;\par
+\tab\tab address=a;\par
+\tab\tab email=em;\par
+\tab\tab num=no\par
+\tab\}\par
+\tab Employee()\par
+\tab\{\par
+\tab\tab name=" ";\par
+\tab\tab emp_id=0;\par
+\tab\tab address=" "\par
+\tab\tab email=" ";\par
+\tab\tab num=0;\par
+\tab\}\par
+\}\par
+\par
+class Programmer extends Employee\{\par
+\tab double weight;\par
+Programmer(String n,int e,String a,String em,long no,int b)\par
+\tab\{\par
+\tab\tab super(w,h,d);\par
+\tab\tab bp=b;\par
+\tab\}\par
+\tab Programmer()\par
+\tab\{\par
+\tab\tab super();\par
+\tab\tab bp=0;\par
+\tab\}\par
+\tab void cal()\par
+\tab\{\par
+\tab int da=0;\par
+\tab int hra=0;\par
+\tab int pf=0;\par
+\tab int staf=0;\par
+\tab da=.97*bp;\par
+\tab hra=.10*bp;\par
+\tab pf=.12*bp;\par
+\tab staf=.001*bp\par
+\tab int gross=bp+da+hra+staf;\par
+\tab int net=gross-pf;\par
+\tab System.out.print("The gross pay is "+gross+"The net pay is "+net);\par
+\par
+\tab\}\par
+\}\par
+\par
+\par
+class professor extends Employee\{\par
+\tab double weight;\par
+professser(String n,int e,String a,String em,long no,int b)\par
+\tab\{\par
+\tab\tab super(w,h,d);\par
+\tab\tab bp=b;\par
+\tab\}\par
+\tab professer()\par
+\tab\{\par
+\tab\tab super();\par
+\tab\tab bp=0;\par
+\tab\}\par
+\tab void cal()\par
+\tab\{\par
+\tab int da=0;\par
+\tab int hra=0;\par
+\tab int pf=0;\par
+\tab int staf=0;\par
+\tab da=.97*bp;\par
+\tab hra=.10*bp;\par
+\tab pf=.12*bp;\par
+\tab staf=.001*bp\par
+\tab int gross=bp+da+hra+staf;\par
+\tab int net=gross-pf;\par
+\tab System.out.print("The gross pay is "+gross+"The net pay is "+net);\par
+\par
+\tab\}\par
+\}\par
+\par
+\par
+class AssistantProf extends Employee\{\par
+\tab double weight;\par
+AssisteantProf(String n,int e,String a,String em,long no,int b)\par
+\tab\{\par
+\tab\tab super(w,h,d);\par
+\tab\tab bp=b;\par
+\tab\}\par
+\tab AssistantProf()\par
+\tab\{\par
+\tab\tab super();\par
+\tab\tab bp=0;\par
+\tab\}\par
+\tab void cal()\par
+\tab\{\par
+\tab int da=0;\par
+\tab int hra=0;\par
+\tab int pf=0;\par
+\tab int staf=0;\par
+\tab da=.97*bp;\par
+\tab hra=.10*bp;\par
+\tab pf=.12*bp;\par
+\tab staf=.001*bp\par
+\tab int gross=bp+da+hra+staf;\par
+\tab int net=gross-pf;\par
+\tab System.out.print("The gross pay is "+gross+"The net pay is "+net);\par
+\par
+\tab\}\par
+\}\par
+\par
+\par
+class AssociateProf extends Employee\{\par
+\tab double weight;\par
+AssociateProf(String n,int e,String a,String em,long no,int b)\par
+\tab\{\par
+\tab\tab super(w,h,d);\par
+\tab\tab bp=b;\par
+\tab\}\par
+\tab AssociateProf()\par
+\tab\{\par
+\tab\tab super();\par
+\tab\tab bp=0;\par
+\tab\}\par
+\tab void cal()\par
+\tab\{\par
+\tab int da=0;\par
+\tab int hra=0;\par
+\tab int pf=0;\par
+\tab int staf=0;\par
+\tab da=.97*bp;\par
+\tab hra=.10*bp;\par
+\tab pf=.12*bp;\par
+\tab staf=.001*bp\par
+\tab int gross=bp+da+hra+staf;\par
+\tab int net=gross-pf;\par
+\tab System.out.print("The gross pay is "+gross+"The net pay is "+net);\par
+\par
+\tab\}\par
+\}\par
+\par
+public Class call\{\par
+\tab public static void main(String args[])throws IOException\par
+\tab\{\tab\par
+\tab\tab double a,b,c;\par
+int ch;\par
+\tab\tab BufferedReader in =new BufferedReader(new InputStreamReader(System.in));\par
+\tab System.out.println("Enter 1 to generate salary of programmer,2 for professor,3 for assisant professor,4 for associate professor");\par
+\tab ch=Integer.parseInt(in.readLine());\par
+\tab switch(ch)\par
+\tab\{\par
+\tab case 1:\par
+\tab\tab\tab System.out.println("Enter the name of the programmer");\par
+\tab\tab\tab n=in.readLine();\tab\tab\par
+\tab\tab\tab System.out.println("Enter the Employee ID of the programmer");\par
+\tab\tab\tab e=Integer.parseInteger(in.readLine());\par
+\tab\tab\tab System.out.println("Enter the address of the programmer");\par
+\tab\tab\tab a=in.readLine();\par
+\tab\tab\tab System.out.println("Enter the mail ID of the programmer");\par
+\tab\tab\tab em=in.readLine();\par
+\tab\tab\tab System.out.println("Enter the mobile number of the programmer");\par
+\tab\tab\tab no=Integer.parseInt(in.readLIne());\par
+\tab\tab\tab System.out.println("Enter the basicpay of the programmer");\par
+\tab\tab\tab b=Integer.parseInt(in.readLIne());\par
+\tab\tab\tab Programmer obj=new Programmer(n,e,a,em,no,b);\par
+\tab\tab\tab void cal();\par
+\tab\tab\tab break;\par
+\tab case 2:\par
+\tab System.out.println("Enter the name of the professor");\par
+\tab\tab\tab n=in.readLine();\tab\tab\par
+\tab\tab\tab System.out.println("Enter the Employee ID of the professor");\par
+\tab\tab\tab e=Integer.parseInteger(in.readLine());\par
+\tab\tab\tab System.out.println("Enter the address of the professor");\par
+\tab\tab\tab a=in.readLine();\par
+\tab\tab\tab System.out.println("Enter the mail ID of the professor");\par
+\tab\tab\tab em=in.readLine();\par
+\tab\tab\tab System.out.println("Enter the mobile number of the professor");\par
+\tab\tab\tab no=Integer.parseInt(in.readLIne());\par
+\tab\tab\tab System.out.println("Enter the basicpay of the professor");\par
+\tab\tab\tab b=Integer.parseInt(in.readLIne());\par
+\tab\tab\tab professor obj=new professor(n,e,a,em,no,b);\par
+\tab\tab\tab void cal();\par
+\tab\tab\tab break;\par
+\tab case 3:\par
+\tab System.out.println("Enter the name of the AssistantProf");\par
+\tab\tab\tab n=in.readLine();\tab\tab\par
+\tab\tab\tab System.out.println("Enter the Employee ID of the AssistantProf");\par
+\tab\tab\tab e=Integer.parseInteger(in.readLine());\par
+\tab\tab\tab System.out.println("Enter the address of the AssistantProf");\par
+\tab\tab\tab a=in.readLine();\par
+\tab\tab\tab System.out.println("Enter the mail ID of the AssistantProf");\par
+\tab\tab\tab em=in.readLine();\par
+\tab\tab\tab System.out.println("Enter the mobile number of the AssistantProf");\par
+\tab\tab\tab no=Integer.parseInt(in.readLIne());\par
+\tab\tab\tab System.out.println("Enter the basicpay of the AssistantProf");\par
+\tab\tab\tab b=Integer.parseInt(in.readLIne());\par
+\tab\tab\tab AssistantProf obj=new AssistantProf(n,e,a,em,no,b);\par
+\tab\tab\tab void cal();\par
+\tab\tab\tab break;\par
+\tab case 4:\par
+\tab System.out.println("Enter the name of the AssociatetProf");\par
+\tab\tab\tab n=in.readLine();\tab\tab\par
+\tab\tab\tab System.out.println("Enter the Employee ID of the AssociatetProf");\par
+\tab\tab\tab e=Integer.parseInteger(in.readLine());\par
+\tab\tab\tab System.out.println("Enter the address of the AssociatetProf");\par
+\tab\tab\tab a=in.readLine();\par
+\tab\tab\tab System.out.println("Enter the mail ID of the AssociatetProf");\par
+\tab\tab\tab em=in.readLine();\par
+\tab\tab\tab System.out.println("Enter the mobile number of the AssociatetProf");\par
+\tab\tab\tab no=Integer.parseInt(in.readLIne());\par
+\tab\tab\tab System.out.println("Enter the basicpay of the AssociatetProf");\par
+\tab\tab\tab b=Integer.parseInt(in.readLIne());\par
+\tab\tab\tab AssociatetProf obj=new AssociatetProf(n,e,a,em,no,b);\par
+\tab\tab\tab void cal();\par
+\tab\tab\tab break;\par
+\par
+\tab default:\par
+\tab System.out.println("Enter a valid input");\par
+\tab\par
+\tab\}\tab\par
+\}\par
+\}\par
+***************************************************************************\par
+import java.io.*;\par
+abstract class Person\par
+\{\par
+    String name=" ";\par
+    int age=0;\par
+    String dob=" ";\par
+    String address=" ";\par
+    Person(String s,int a,String d,String add)\par
+    \{\par
+        name=s;\par
+        age=a;\par
+        dob=d;\par
+        address=add;\par
+    \}\par
+    \par
+    abstract calPerformance();\par
+\}\par
+\par
+class Student extends Person\par
+\{\par
+    String dept;\par
+    int m,ext;\par
+    Student(String s,int a,String d,String add,String dep,int m,int ext)\par
+    \{\par
+    super();\par
+    department=dep;\par
+    mark=m;\par
+    extra=ext;\par
+    \}\par
+    \par
+    calPerformance()\par
+    \{\par
+        if((m>80)&&(ext>=2))\par
+        \{\par
+            System.put.println("Outstanding");\par
+        \}\par
+        else if((m>50)&&(ext=1))\par
+        \{\par
+            System.out.println("Good");    \par
+        \}\par
+        else\par
+            System.outprintln("Fair")\par
+    \}\par
+\}\par
+\par
+class Professor extends Person\par
+\{\par
+    String dept;\par
+    int fp,paper;\par
+    Professor(String s,int a,String d,String add,String dep,int f,int pa)\par
+    \{\par
+    super();\par
+    f=fp;\par
+    paper=pa;\par
+    department=dep;\par
+    \}\par
+    \par
+    calPerformance()\par
+    \{\par
+        if((f>5)&&(paper>=10))\par
+        \{\par
+            System.put.println("Outstanding");\par
+        \}\par
+        else if((f<=2)&&(paper<=5))\par
+        \{\par
+            System.out.println("Good");    \par
+        \}\par
+        else\par
+            System.outprintln("Fair")\par
+    \}\par
+\}\par
+\par
+class call\par
+\{\par
+    public static void main(Strig args[])throws IOException\par
+    \{\par
+        BufferedReader in =new BufferedReader(new InputStreamReader(System.in));\par
+        System.outprintln("Enter the 1 to calculate the performance of a Student,and 2 otherwise");\par
+        int ch=Integer.parseInt(in.readLine());\par
+        switch(ch)\par
+        \{\par
+            case 1:\par
+                     String s,d,add,dep;\par
+                     int m,no,a,i;\par
+                     System.out.println("Enter the number of students");\par
+                     int n=Integer.parseInt(in.readLine());\par
+                     System.out.println("Enter the name");\par
+                     s=in.readLine();\par
+                     System.out.println("Enter the dob");\par
+                     d=in.readLine();\par
+                     System.out.println("Enter the address");\par
+                     add=in.readLine();\par
+                     System.out.println("Enter the age");\par
+                     ag=Integer.parseInt(in.readLine());\par
+                     System.out.println("Enter the department");\par
+                     dep=in.readLine();\par
+                     System.out.println("Enter the marks");\par
+                     m=Integer.parseInt(in.readLine());\par
+                     System.out.println("Enter the number of extra curricular activity");\par
+                     no=Integer.parseInt(in.readLine());\par
+                     Student s[]=new Student[n+1];\par
+                     for(i=0;i<n;i++)\par
+                     \{\par
+                      s[i].Student(s,a,d,add,dep,m,no);\par
+                      s[i].calPerformance();\par
+                     \}\par
+                     break;\par
+            case 2:\par
+                     String s,d,add,dep;\par
+                     int fp,pap,i;\par
+                     System.out.println("Enter the number of professors");\par
+                     int n=Integer.parseInt(in.readLine());\par
+                     System.out.println("Enter the name");\par
+                     s=in.readLine();\par
+                     System.out.println("Enter the dob");\par
+                     d=in.readLine();\par
+                     System.out.println("Enter the address");\par
+                     add=in.readLine();\par
+                     System.out.println("Enter the age");\par
+                     ag=Integer.parseInt(in.readLine());\par
+                     System.out.println("Enter the department");\par
+                     dep=in.readLine();\par
+                     System.out.println("Enter the number of funded project");\par
+                     fp=Integer.parseInt(in.readLine());\par
+                     System.out.println("Enter the number of papers published");\par
+                     pap=Integer.parseInt(in.readLine());\par
+                     Professor p[]=new Professor[n+1];\par
+                     for(i=0;i<n;i++)\par
+                     \{\par
+                      p[i].Professor(s,a,d,add,dep,f,pap);\par
+                      p[i].calPerformance();\par
+                     \}\par
+                     break;\par
+            default:\par
+                    System.out.println("Enter a valid choice");\par
+        \}\par
+    \}\par
+\}\par
+\par
+}
+ 

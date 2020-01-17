@@ -1,0 +1,898 @@
+{\rtf1\ansi\deff0\nouicompat{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.17134}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 import java.io.*;\par
+public class BinarySearch\par
+\{\par
+\tab public static void main(String args[])throws IOException\par
+\tab\{\par
+\tab\tab BufferedReader in =new BufferedReader(new InputStreamReader(System.in));\par
+\tab\tab System.out.println("Enter the number of elements in the array");\par
+\tab\tab int n=Integer.parseInt(in.readLine());\par
+\tab\tab int a[]=new int[n];\par
+\tab\tab int first,last,mid,i,search;\par
+\tab\tab System.out.println("Enter the elements of the array");\par
+\tab\tab for(i=0;i<n;i++)\par
+\tab\tab\{\par
+\tab\tab\tab a[i]=Integer.parseInt(in.readLine());\par
+\tab\tab\}\par
+\tab\tab System.out.println("Enter the number to be searched");\par
+\tab\tab search=Integer.parseInt(in.readLine());\par
+\tab\tab first=0;\par
+\tab\tab last=n-1;\par
+\tab\tab\par
+\tab\tab while(first<=last)\par
+\tab\tab\{\par
+\tab\tab\tab mid=(first+last)/2;\par
+\tab\tab\tab if(a[mid]<search)\par
+\tab\tab\tab\{\par
+\tab\tab\tab first=mid+1;\par
+\tab\tab\tab\}\par
+\tab\tab\tab else if(a[mid]==search)\par
+\tab\tab\tab\{\par
+\tab\tab\tab System.out.println("Element is found at the index "+mid);\par
+\tab\tab\tab break;\par
+\tab\tab\tab\}\par
+\tab\tab\tab else\par
+\tab\tab\tab\{\par
+\tab\tab\tab last=mid-1;\par
+\tab\tab\tab\}\par
+\tab\tab\tab mid=(first+last)/2;\par
+\tab\tab\}\tab\par
+\tab\tab if(last<first)\par
+\tab\tab\{\par
+\tab\tab System.out.println("Element is not found");\par
+\tab\tab\}\par
+\tab\}\par
+\}\par
+*****************************************************************************\par
+import java.io.*;\par
+public class ElectricityBill\{\par
+\tab public static void main(String args[])throws IOException\par
+\tab\{\par
+\tab\tab int con_no,prev,curr;\par
+\tab\tab String name,type;\par
+\tab\tab ElectricityBill ob=new ElectricityBill();\par
+\tab\tab BufferedReader in =new BufferedReader(new InputStreamReader(System.in));\par
+\tab\tab System.out.println("Enter the name");\par
+\tab\tab name=in.readLine();\par
+\tab\tab System.out.println("Enter the consumer no");\par
+\tab\tab con_no=Integer.parseInt(in.readLine());\tab\par
+\tab\tab System.out.println("Enter the PREVIOUS  month reading");\par
+\tab\tab prev=Integer.parseInt(in.readLine());\par
+\tab\tab System.out.println("Enter the CURRENT month reading");\par
+\tab\tab curr=Integer.parseInt(in.readLine());\tab\par
+\tab\tab System.out.println("Enter the TYPE OF EB connection");\par
+\tab\tab type=in.readLine();\tab\par
+\tab\tab if(type.equals("domestic"))\par
+\tab\tab\{\par
+\tab\tab ob.Calc_D(curr);\par
+\tab\tab\}\par
+\tab\tab else\par
+\tab\tab\{\par
+\tab\tab ob.Calc_C(curr);\par
+\tab\tab\}\par
+\tab\}\par
+\tab\par
+\tab void Calc_D(int curr)\par
+\tab\{\par
+\tab\tab int a;\par
+\tab\tab double bill;\par
+\tab\tab a=curr;\par
+\tab\tab if(a<100)\par
+\tab\tab\{\par
+\tab\tab\tab bill=a;\par
+\tab\tab\}\par
+\tab\tab else if((a>100)&&(a<200))\par
+\tab\tab\{\par
+\tab\tab\tab bill=100+(a-100)*2.50;\par
+\tab\tab\}\par
+\tab\tab else if((a>200)&&(a<500))\par
+\tab\tab\{\par
+\tab\tab\tab bill=100+(2.50*100)+((a-200)*4);\par
+\tab\tab\}\par
+\tab\tab else\par
+\tab\tab\{\par
+\tab\tab\tab bill=100+(2.50*100)+(300*4)+((a-500)*6);\par
+\tab\tab\}\par
+\tab\tab System.out.println("The bill is Rs."+bill);\par
+\tab\}\par
+\par
+\tab void Calc_C(int curr)\par
+\tab\{\par
+\tab\tab int a;\par
+\tab\tab double bill;\par
+\tab\tab a=curr;\par
+\tab\tab if(a<100)\par
+\tab\tab\{\par
+\tab\tab\tab bill=a*2;\par
+\tab\tab\}\par
+\tab\tab else if((a>100)&&(a<200))\par
+\tab\tab\{\par
+\tab\tab\tab bill=(100*2)+((a-100)*4.50);\par
+\tab\tab\}\par
+\tab\tab else if((a>200)&&(a<500))\par
+\tab\tab\{\par
+\tab\tab\tab bill=(100*2)+(4.50*100)+((a-200)*6);\par
+\tab\tab\}\par
+\tab\tab else\par
+\tab\tab\{\par
+\tab\tab\tab bill=(100*2)+(4.50*100)+(300*6)+((a-500)*7);\par
+\tab\tab\}\par
+\tab\tab System.out.println("The bill is Rs."+bill);\par
+\tab\}\par
+\}\par
+/*cs1166@u5:~/Desktop$ javac ElectricityBill.java\par
+cs1166@u5:~/Desktop$ java ElectricityBill\par
+Enter the name\par
+Srinithyee\par
+Enter the consumer no\par
+14325\par
+Enter the PREVIOUS  month reading\par
+6543\par
+Enter the CURRENT month reading\par
+645\par
+Enter the TYPE OF EB connection\par
+commercial\par
+The bill is Rs.3465.0\par
+*/\par
+*******************************************************************************\par
+import java.util.Scanner;\par
+\par
+public class Calc \{\par
+\par
+       public static void main(String[] args) \{\par
+\tab Scanner s = new Scanner(System.in);\par
+\tab System.out.println("Enter 1 to perform addition");\par
+\tab System.out.println(" 2 to perform subtraction");\par
+\tab System.out.println(" 3 to perform multiplicaion");\par
+\tab int n=s.nextInt();\par
+\tab Calc ob =new Calc();\par
+\tab switch(n)\par
+\tab\{\par
+\tab case 1:\par
+\tab\{\par
+\tab ob.add();\par
+\tab break;\par
+\tab\}\par
+\tab case 2:\par
+\tab\{\par
+\tab ob.sub();\par
+\tab break;\par
+\tab\}\par
+\tab case 3:\par
+\tab\{\par
+\tab ob.multiply();\par
+\tab break;\par
+\tab\}\par
+\tab default:\par
+\tab System.out.print("ENTER VALID CHOICE");\par
+\tab\}\par
+\tab\}\par
+\par
+\tab public void add()\par
+\tab\{\tab\tab                    \par
+\tab        Scanner s = new Scanner(System.in);\par
+\tab        System.out.print("Enter number of rows: ");\par
+\tab        int rows = s.nextInt();\par
+\tab        System.out.print("Enter number of columns: ");\par
+\tab        int columns = s.nextInt();\par
+\tab        int[][] a = new int[rows][columns];\par
+\tab        int[][] b = new int[rows][columns];\par
+\tab        System.out.println("Enter the first matrix");\par
+\tab        for (int i = 0; i < rows; i++) \{\par
+\tab\tab    for (int j = 0; j < columns; j++) \{\par
+\tab\tab        a[i][j] = s.nextInt();\par
+\tab\tab    \}\par
+\tab        \}\par
+\tab        System.out.println("Enter the second matrix");\par
+\tab        for (int i = 0; i < rows; i++) \{\par
+\tab\tab    for (int j = 0; j < columns; j++) \{\par
+\tab\tab        b[i][j] = s.nextInt();\par
+\tab\tab    \}\par
+\tab        \}\par
+\tab        int[][] c = new int[rows][columns];\par
+\tab        for (int i = 0; i < rows; i++) \{\par
+\tab\tab    for (int j = 0; j < columns; j++) \{\par
+\tab\tab        c[i][j] = a[i][j] + b[i][j];\par
+\tab\tab    \}\par
+\tab        \}\par
+\tab        System.out.println("The sum of the two matrices is");\par
+\tab        for (int i = 0; i < rows; i++) \{\par
+\tab\tab    for (int j = 0; j < columns; j++) \{\par
+\tab\tab        System.out.print(c[i][j] + " ");\par
+\tab\tab    \}\par
+\tab\tab    System.out.println();\par
+\tab        \}\par
+\tab\}\par
+\par
+\tab public void sub()\par
+\tab\{\tab\tab                    \par
+\tab        Scanner s = new Scanner(System.in);\par
+\tab        System.out.print("Enter number of rows: ");\par
+\tab        int rows = s.nextInt();\par
+\tab        System.out.print("Enter number of columns: ");\par
+\tab        int columns = s.nextInt();\par
+\tab        int[][] a = new int[rows][columns];\par
+\tab        int[][] b = new int[rows][columns];\par
+\tab        System.out.println("Enter the first matrix");\par
+\tab        for (int i = 0; i < rows; i++) \{\par
+\tab\tab    for (int j = 0; j < columns; j++) \{\par
+\tab\tab        a[i][j] = s.nextInt();\par
+\tab\tab    \}\par
+\tab        \}\par
+\tab        System.out.println("Enter the second matrix");\par
+\tab        for (int i = 0; i < rows; i++) \{\par
+\tab\tab    for (int j = 0; j < columns; j++) \{\par
+\tab\tab        b[i][j] = s.nextInt();\par
+\tab\tab    \}\par
+\tab        \}\par
+\tab        int[][] c = new int[rows][columns];\par
+\tab        for (int i = 0; i < rows; i++) \{\par
+\tab\tab    for (int j = 0; j < columns; j++) \{\par
+\tab\tab        c[i][j] = a[i][j] - b[i][j];\par
+\tab\tab    \}\par
+\tab        \}\par
+\tab        System.out.println("The difference of the two matrices is");\par
+\tab        for (int i = 0; i < rows; i++) \{\par
+\tab\tab    for (int j = 0; j < columns; j++) \{\par
+\tab\tab        System.out.print(c[i][j] + " ");\par
+\tab\tab    \}\par
+\tab\tab    System.out.println();\par
+\tab        \}\par
+\tab\}\par
+\par
+\tab public void multiply()\par
+\tab\{\par
+\tab Scanner s = new Scanner(System.in);\par
+\tab        System.out.print("Enter number of rows: ");\par
+\tab        int rows = s.nextInt();\par
+\tab        System.out.print("Enter number of columns: ");\par
+\tab        int columns = s.nextInt();\par
+\tab        int[][] a = new int[rows][columns];\par
+\tab        int[][] b = new int[rows][columns];\par
+\tab        System.out.println("Enter the first matrix");\par
+\tab        for (int i = 0; i < rows; i++) \{\par
+\tab\tab    for (int j = 0; j < columns; j++) \{\par
+\tab\tab        a[i][j] = s.nextInt();\par
+\tab\tab    \}\par
+\tab        \}\par
+\tab        System.out.println("Enter the second matrix");\par
+\tab        for (int i = 0; i < rows; i++) \{\par
+\tab\tab    for (int j = 0; j < columns; j++) \{\par
+\tab\tab        b[i][j] = s.nextInt();\par
+\tab\tab    \}\par
+\tab        \}\par
+\tab        System.out.println("The product of the two matrices is");\par
+\tab        int[][] c = new int[rows][columns];\par
+\tab        for (int i = 0; i < rows; i++) \{\par
+\tab\tab    for (int j = 0; j < columns; j++) \{\par
+\tab\tab        c[i][j] =0;\par
+\tab\tab\tab for(int k=0;k<columns;k++)      \par
+\tab\tab\tab\{      \par
+\tab\tab\tab c[i][j]+=a[i][k]*b[k][j];      \par
+\tab\tab\tab\}//end of k loop  \par
+\tab\tab\tab System.out.print(c[i][j]+" ");  //printing matrix element  \par
+\tab\tab\tab\}//end of j loop  \par
+\tab\tab\tab System.out.println();//new line    \par
+\tab\tab\tab\}    \par
+\tab        \par
+\tab\}\par
+\}\par
+/*cs1166@u5:~/Desktop$ java Calc\par
+Enter 1 to perform addition\par
+ 2 to perform subtraction\par
+ 3 to perform multiplicaion\par
+1\par
+Enter number of rows: 2\par
+Enter number of columns: 2\par
+Enter the first matrix\par
+2\par
+6\par
+4\par
+5\par
+Enter the second matrix\par
+3\par
+7\par
+5\par
+2\par
+The sum of the two matrices is\par
+5 13 \par
+9 7 \par
+**************************************\par
+cs1166@u5:~/Desktop$ java Calc\par
+Enter 1 to perform addition\par
+ 2 to perform subtraction\par
+ 3 to perform multiplicaion\par
+2\par
+Enter number of rows: 3\par
+Enter number of columns: 3\par
+Enter the first matrix\par
+2\par
+3\par
+4\par
+5\par
+6\par
+7\par
+8\par
+4\par
+5\par
+Enter the second matrix\par
+6\par
+3\par
+4\par
+5\par
+6\par
+7\par
+1\par
+2\par
+3\par
+The difference of the two matrices is\par
+-4 0 0 \par
+0 0 0 \par
+7 2 2 \par
+***************************************\par
+cs1166@u5:~/Desktop$ java Calc\par
+Enter 1 to perform addition\par
+ 2 to perform subtraction\par
+ 3 to perform multiplicaion\par
+3\par
+Enter number of rows: 2\par
+Enter number of columns: 2\par
+Enter the first matrix\par
+2\par
+3\par
+4\par
+5\par
+Enter the second matrix\par
+6\par
+7\par
+8\par
+9\par
+The product of the two matrices is:\par
+36 41\par
+64 73\par
+*/\par
+\par
+**********************************************************************************\par
+import java.util.Random;\par
+import java.io.*;\par
+public class Numberguess\{\par
+\tab public static void main(String args[])throws IOException\par
+\tab\{\par
+\tab\tab int i,c;c=1;\par
+\tab\tab Random rand =new Random();\par
+\tab\tab int rand_int=rand.nextInt(100);\par
+\tab\tab BufferedReader in =new BufferedReader(new InputStreamReader(System.in));\par
+\tab\tab do\par
+\tab\tab\{\par
+\tab\tab\tab System.out.println("Enter the number");\par
+\tab\tab\tab i=Integer.parseInt(in.readLine());\par
+\tab\tab\tab if(i==rand_int)\par
+\tab\tab\tab\{\par
+\tab\tab\tab\tab System.out.println("You got it in "+c+" trials!");\par
+\tab\tab\tab\}\par
+\tab\tab\tab else if(i>rand_int)\par
+\tab\tab\tab\{\par
+\tab\tab\tab\tab System.out.println("Try lower");\par
+\tab\tab\tab\}\par
+\tab\tab\tab else\par
+\tab\tab\tab\{\par
+\tab\tab\tab\tab System.out.println("Try higher");\par
+\tab\tab\tab\}\par
+\tab\tab\tab c++;\par
+\tab\tab\}\par
+\tab\tab while(i!=rand_int);\par
+\tab\}\par
+\}\par
+/*cs1166@u5:~/Desktop$ javac Numberguess.java\par
+cs1166@u5:~/Desktop$ java Numberguess\par
+Enter the number\par
+5\par
+Try higher\par
+Enter the number\par
+80\par
+Try higher\par
+Enter the number\par
+99\par
+Try lower\par
+Enter the number\par
+87\par
+Try higher\par
+Enter the number\par
+92\par
+Try higher\par
+Enter the number\par
+95\par
+Try higher\par
+Enter the number\par
+97\par
+Try lower\par
+Enter the number\par
+96\par
+You got it in 8trials!\par
+*/\par
+***************************************************************************\par
+import java.io.*;\par
+public class payroll\{\par
+\tab public static void main(String args[])throws IOException\par
+\tab\{\par
+int i;\par
+BufferedReader iny =new BufferedReader(new InputStreamReader(System.in));\par
+\tab\tab System.out.println("Enter the number of employees");\par
+\tab\tab int n=Integer.parseInt(iny.readLine());\tab\par
+\tab\tab payroll ob[]=new payroll[n];\par
+\tab\tab for(i=0;i<n;i++)\par
+\tab\tab\{\par
+\tab\tab ob[i].calculate();\par
+\tab\tab\}\par
+\tab\}\par
+\tab\tab void calculate()throws IOException\par
+\tab\tab\{\tab\par
+\tab\par
+\tab\tab int emp_id,hours;\par
+\tab\tab double da,hra,lic,pf,basic;\par
+da=0.0;\par
+basic=0.0;\par
+hours=0;\par
+\par
+\tab\tab double gross=0.0;\par
+\tab\tab double deduction=0.0;\par
+\tab\tab double net=0.0;\par
+\tab\tab String name,designation,dob;\par
+\tab\tab int date_join;\par
+date_join=0;\par
+\tab\tab int c=2019;\par
+\tab\tab int d=c-date_join;\par
+\tab\tab BufferedReader in =new BufferedReader(new InputStreamReader(System.in));\par
+    \tab\tab System.out.println("Enter the name");\par
+\tab\tab name=in.readLine();\par
+\tab\tab System.out.println("Enter the employee id");\par
+\tab\tab emp_id=Integer.parseInt(in.readLine());\tab\par
+\tab\tab System.out.println("Enter the LIC");\par
+\tab\tab lic=Double.parseDouble(in.readLine()); \par
+\tab\tab System.out.println("Enter the designation");\par
+\tab\tab designation=in.readLine();\tab\par
+\tab\tab System.out.println("Enter the year of join");\par
+\tab\tab date_join=Integer.parseInt(in.readLine());\tab\par
+\tab\tab System.out.println("Enter the date of birth");\par
+\tab\tab dob=in.readLine();\par
+\tab\tab if(designation.equals("Intern"))\par
+\tab\tab\{\par
+\tab\tab da=2000.0;\par
+\tab\tab hra=1000;\par
+\tab\tab pf=500.0;\par
+\tab\tab gross=(hours*basic)+da+hra;\par
+\tab\tab deduction=lic+pf;\par
+\tab\tab net=gross-deduction;\par
+\tab\tab\par
+\tab\tab\}\par
+\par
+\tab\tab else if(designation.equals("manager"))\par
+\tab\tab\{\par
+\tab\tab da=.40*basic;\par
+\tab\tab hra=.10*basic;\par
+\tab\tab pf=.8*basic;\par
+\tab\tab gross=basic+da+hra;\par
+\tab\tab deduction=lic+pf;\par
+\tab\tab net=gross-deduction;\par
+\tab\tab\}\par
+\tab\tab else\par
+\tab\tab\{\par
+\tab\tab da=.30*basic;\par
+\tab\tab hra=.10*basic;\par
+\tab\tab pf=.8*basic;\par
+\tab\tab gross=basic+da+hra;\par
+\tab\tab deduction=lic+pf;\par
+\tab\tab net=gross-deduction;\par
+\tab\tab\}\par
+\tab\tab System.out.println("Salary is Rs."+net);\par
+\par
+\tab\tab if(d>10)\par
+\tab\tab\{\par
+\tab\tab System.out.println("You are eligible for promotion");\par
+\tab\tab\}\par
+\tab\tab else\par
+\tab\tab\{\par
+\tab\tab System.out.println("You are not elible for promotion");\par
+\tab\tab\}\par
+\tab\}\par
+\}\par
+\tab\tab\par
+***************************************************************************\par
+import java.io.*;\par
+public class Search\par
+\{\par
+\tab public static void main(String args[])throws IOException\par
+\tab\{\par
+\tab\tab BufferedReader in =new BufferedReader(new InputStreamReader(System.in));\par
+\tab\tab System.out.println("Enter the number of elements in the array");\par
+\tab\tab int n=Integer.parseInt(in.readLine());\par
+\tab\tab int a[]=new int[n];\par
+\tab\tab int i,j,k,search;\par
+int flag =0;\par
+int d=0;\par
+\tab\tab System.out.println("Enter the elements of the array");\par
+\tab\tab for(i=0;i<n;i++)\par
+\tab\tab\{\par
+\tab\tab\tab a[i]=Integer.parseInt(in.readLine());\par
+\tab\tab\}\par
+\tab\tab System.out.println("Enter the number to be searched");\par
+\tab\tab search=Integer.parseInt(in.readLine());\par
+\tab\tab for(k=0;k<n;k++)\par
+\tab\tab\{\par
+\tab\tab\tab  d=k+1;\par
+\tab\tab\tab if(a[k]==search)\par
+\tab\tab\tab\{\par
+\tab\tab\tab\tab flag=1;\par
+\tab\tab\tab\tab break;\par
+\tab\tab\tab\}\par
+\tab\par
+\tab\tab\}\par
+\par
+\tab\tab if(flag==1)\par
+\tab\tab\{\par
+\tab\tab\tab System.out.println("Element is found at index "+d);\par
+\tab\tab\}\par
+\tab\tab else\par
+\tab\tab\tab\tab System.out.println("Element not found at");\par
+\tab\}\par
+\}\par
+**************************************************************************\par
+import java.io.*;\par
+public class sort\par
+\{\par
+\tab public static void main(String args[])throws IOException\par
+\tab\{\par
+\tab\tab BufferedReader in =new BufferedReader(new InputStreamReader(System.in));\par
+\tab\tab System.out.println("Enter the number of elements in the array");\par
+\tab\tab int n=Integer.parseInt(in.readLine());\par
+\tab\tab int a[]=new int[n];\par
+\tab\tab int i,j,k,temp;\par
+\tab\tab System.out.println("Enter the elements of the array");\par
+\tab\tab for(i=0;i<n;i++)\par
+\tab\tab\{\par
+\tab\tab\tab a[i]=Integer.parseInt(in.readLine());\par
+\tab\tab\}\par
+\tab\tab for(j=0;j<n;j++)\par
+\tab\tab\{\par
+\tab\tab\tab for(k=j+1;k<n;k++)\par
+\tab\tab\tab\{\par
+\par
+\tab\tab\tab\tab if(a[j]>a[k])\par
+\tab\tab\tab\tab\{\par
+\tab\tab\tab\tab\tab temp=a[j];\par
+\tab\tab\tab\tab\tab a[j]=a[k];\par
+\tab\tab\tab\tab\tab a[k]=temp;\par
+\tab\tab\tab\tab\}\par
+\tab\tab\tab\}\par
+\par
+\tab\tab\}\par
+\tab\tab System.out.println("The sorted array is:");\par
+\tab\tab for(i=0;i<n-1;i++)\par
+\tab\tab\{\par
+\tab\tab\tab System.out.print(a[i]+" ");\par
+\tab\tab\}\par
+\tab\tab System.out.println(a[n-1]);\par
+\tab\}\par
+\}\par
+***************************************************************************\par
+import java.io.*;\par
+public class sort\par
+\{\par
+\tab public static void main(String args[])throws IOException\par
+\tab\{\par
+\tab\tab BufferedReader in =new BufferedReader(new InputStreamReader(System.in));\par
+\tab\tab System.out.println("Enter the number of elements in the array");\par
+\tab\tab int n=Integer.parseInt(in.readLine());\par
+\tab\tab int a[]=new int[n];\par
+\tab\tab int i,j,k,temp;\par
+\tab\tab System.out.println("Enter the elements of the array");\par
+\tab\tab for(i=0;i<n;i++)\par
+\tab\tab\{\par
+\tab\tab\tab a[i]=Integer.parseInt(in.readLine());\par
+\tab\tab\}\par
+\tab\tab for(j=0;j<n;j++)\par
+\tab\tab\{\par
+\tab\tab\tab for(k=j+1;k<n;k++)\par
+\tab\tab\tab\{\par
+\par
+\tab\tab\tab\tab if(a[j]>a[k])\par
+\tab\tab\tab\tab\{\par
+\tab\tab\tab\tab\tab temp=a[j];\par
+\tab\tab\tab\tab\tab a[j]=a[k];\par
+\tab\tab\tab\tab\tab a[k]=temp;\par
+\tab\tab\tab\tab\}\par
+\tab\tab\tab\}\par
+\par
+\tab\tab\}\par
+\tab\tab System.out.println("The sorted array is:");\par
+\tab\tab for(i=0;i<n-1;i++)\par
+\tab\tab\{\par
+\tab\tab\tab System.out.print(a[i]+" ");\par
+\tab\tab\}\par
+\tab\tab System.out.println(a[n-1]);\par
+\tab\}\par
+\}\par
+**************************************************************************\par
+import java.util.Scanner;\par
+public class Student\par
+\{\par
+\tab static int n;\par
+\tab int regno;\par
+\tab String name,dept;\par
+\tab float m1,m2,m3,tot,avg;\par
+\tab char grade;\par
+\par
+\tab public void calcTotal()\par
+\tab\{\par
+\tab\tab tot=m1+m2+m3;\par
+\tab\tab avg=tot/3;\par
+\tab\}\par
+\tab\par
+\tab public void calcGrade()\par
+\tab\{\par
+\tab\tab if(avg>=90)\par
+\tab\tab\tab grade='O';\par
+\tab\tab else if(avg>=80 && avg<90)\par
+\tab\tab\tab grade='A';\par
+\tab\tab else if(avg>=70 && avg<80)\par
+\tab\tab\tab grade='B';\par
+\tab\tab else if(avg>=60 && avg<70)\par
+\tab\tab\tab grade='C';\par
+\tab\tab else\par
+\tab\tab\tab grade='F';\par
+\tab\}\par
+\tab\par
+\tab public void Input()\par
+\tab\{\par
+\tab\tab System.out.println("Enter Student Details: ");\par
+\tab\tab Scanner sc=new Scanner(System.in);\par
+\tab\tab System.out.println("Enter Student ID: ");\par
+\tab\tab regno=sc.nextInt();\par
+\tab\tab System.out.println("Enter Student Name: ");\par
+\tab\tab sc.nextLine();\par
+\tab\tab name=sc.nextLine();\par
+\tab\tab System.out.println("Enter Student Department: ");\par
+\tab\tab dept=sc.nextLine();\par
+\tab\tab System.out.println("Enter Student Marks (Separated by spaces): ");\par
+\tab\tab m1=sc.nextInt();\par
+\tab\tab m2=sc.nextInt();\par
+\tab\tab m3=sc.nextInt();\par
+\tab\}\par
+\tab\par
+\tab public static void main(String args[])\par
+\tab\{\par
+\tab\tab Scanner sn=new Scanner(System.in);\par
+\tab\tab System.out.println("Enter the number of students: ");\tab\tab\par
+\tab\tab int n=sn.nextInt();\par
+\tab\tab Student s[]=new Student[n+1];\par
+\tab\tab for(int i=0;i<n;i++)\{\par
+\tab\tab\tab s[i]=new Student();\par
+\tab\tab\tab s[i].Input();\par
+\tab\tab\tab s[i].calcTotal();\par
+\tab\tab\tab s[i].calcGrade();\par
+\par
+\tab\tab\}\par
+\tab\tab\par
+\tab\tab while(true)\{\par
+\tab\tab\tab int stuflag=0;\par
+\tab\tab\tab System.out.println("\\nDo you wish to search for a particular student?(Y-1,N-0)");\par
+\tab\tab\tab int ch=sn.nextInt();\par
+\tab\tab\tab if(ch==1)\{\par
+\tab\tab\tab\tab System.out.println("Enter 1 to search by department\\nEnter 2 to search by ID");\par
+\tab\tab\tab\tab int sch=sn.nextInt();\par
+\tab\tab\tab\tab if(sch==2)\{\tab\tab\tab\par
+\tab\tab\tab\tab\tab System.out.println("Enter Student ID: ");\par
+\tab\tab\tab\tab\tab int stuid=sn.nextInt();\par
+\tab\tab\tab\tab\tab for(int i=0;i<n;i++)\{\par
+\tab\tab\tab\tab\tab\tab if(stuid==s[i].regno)\{\par
+\tab\tab\tab\tab\tab\tab\tab System.out.println("\\n\\nStudent name: "+s[i].name+"\\nStudent Total: "+s[i].tot+"\\nStudent Grade: "+s[i].grade);\par
+\tab\tab\tab\tab\tab\tab\tab stuflag++;\par
+\tab\tab\tab\tab\tab\tab\}\par
+\tab\tab\tab\tab\tab\}\par
+\tab\tab\tab\tab\tab if(stuflag==0)\par
+\tab\tab\tab\tab\tab\tab System.out.println("Sorry, the specified student ID does not exist.");\par
+\tab\tab\tab\tab\}\par
+\tab\tab\tab\tab else if(sch==1)\{\par
+\tab\tab\tab\tab\tab System.out.println("Enter Student Department: ");\par
+\tab\tab\tab\tab\tab sn.nextLine();\par
+\tab\tab\tab\tab\tab String studept=sn.nextLine();\par
+\tab\tab\tab\tab\tab System.out.println("Enter Student Name: ");\par
+\tab\tab\tab\tab\tab String stuname=sn.nextLine();\par
+\tab\tab\tab\tab\tab for(int i=0;i<n;i++)\{\par
+\tab\tab\tab\tab\tab\tab if(studept.equalsIgnoreCase(s[i].dept)&&stuname.equalsIgnoreCase(s[i].name))\{\par
+\tab\tab\tab\tab\tab\tab\tab System.out.println("\\n\\nStudent ID: "+s[i].regno+"\\nStudent Total: "+s[i].tot+"\\nStudent Grade: "+s[i].grade);\par
+\tab\tab\tab\tab\tab\tab\tab stuflag++;\par
+\tab\tab\tab\tab\tab\tab\}\tab\par
+\tab\tab\tab\tab\tab\}\par
+\tab\tab\tab\tab\tab if(stuflag==0)\par
+\tab\tab\tab\tab\tab\tab System.out.println("Sorry, the specified student in the specified department does not exist.");\par
+\tab\tab\tab\tab\}\par
+\tab\tab\tab\tab else\par
+\tab\tab\tab\tab\tab System.out.println("Invalid Input! Enter 1 or 2 only!");\par
+\tab\tab\tab\}\par
+\tab\tab\tab else if(ch==0)\{\par
+\tab\tab\tab\tab System.out.println("\\n\\nThank you!");\par
+\tab\tab\tab\tab System.exit(0);\par
+\tab\tab\tab\tab break;\par
+\tab\tab\tab\}\par
+\tab\tab\tab else\par
+\tab\tab\tab\tab System.out.println("Invalid Input! Enter 0 or 1 only.");\par
+\par
+\tab\tab\}\par
+\tab\}\par
+\}\par
+\par
+\par
+/*\par
+cs1162@u13:~/Desktop/cs1162/a2$ javac Student.java\par
+cs1162@u13:~/Desktop/cs1162/a2$ java Student\par
+Enter the number of students: \par
+3\par
+Enter Student Details: \par
+Enter Student ID: \par
+123\par
+Enter Student Name: \par
+mike\par
+Enter Student Department: \par
+cse\par
+Enter Student Marks (Separated by spaces): \par
+100 92 88\par
+Enter Student Details: \par
+Enter Student ID: \par
+128\par
+Enter Student Name: \par
+nirmal\par
+Enter Student Department: \par
+ece\par
+Enter Student Marks (Separated by spaces): \par
+90 87 94\par
+Enter Student Details: \par
+Enter Student ID: \par
+145\par
+Enter Student Name: \par
+alex\par
+Enter Student Department: \par
+mech\par
+Enter Student Marks (Separated by spaces): \par
+76 95 88\par
+\par
+Do you wish to search for a particular student?(Y-1,N-0)\par
+1\par
+Enter 1 to search by department\par
+Enter 2 to search by ID\par
+1\par
+Enter Student Department: \par
+cse\par
+Enter Student Name: \par
+mike\par
+\par
+\par
+Student ID: 123\par
+Student Total: 280.0\par
+Student Grade: O\par
+\par
+Do you wish to search for a particular student?(Y-1,N-0)\par
+1\par
+Enter 1 to search by department\par
+Enter 2 to search by ID\par
+2\par
+Enter Student ID: \par
+145\par
+\par
+\par
+Student name: alex\par
+Student Total: 259.0\par
+Student Grade: A\par
+\par
+Do you wish to search for a particular student?(Y-1,N-0)\par
+n\par
+*/\tab\par
+**************************************************************************\par
+import java.io.*;\par
+\par
+public class uniqueCount\{\par
+\par
+    // Function to print elements with no duplicates\par
+\par
+    public static void NoDuplicates(int[] array)\{\par
+\par
+        int i,j;\par
+\par
+        int count;\par
+\par
+        int x = 0;\par
+\par
+        boolean[] flag = new boolean[array.length];\par
+\par
+        for(i=0; i<array.length; i++)\{\par
+\par
+            if(!flag[i])\{\par
+\par
+                count  = 1;\par
+\par
+                for(j=i+1; j<array.length;j++)\{\par
+\par
+                    if(array[j] == array[i])\par
+\par
+                    \{\par
+\par
+                        count++;\par
+\par
+                        flag[j] = true;\par
+\par
+                    \}\par
+\par
+                \}\par
+\par
+                if(count == 1)\{\par
+\par
+                    System.out.println(array[i]);\par
+\par
+                    x++;\par
+\par
+                \}\par
+\par
+            \}\par
+\par
+        \}\par
+\par
+        if(x==0)\{\par
+\par
+            System.out.println("All elements are repeated");\par
+\par
+        \}\par
+\par
+    \}\par
+\par
+\par
+    public static void main(String[] args)throws IOException \{\par
+\par
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));\par
+\par
+        int size;\par
+\par
+        System.out.println("Enter the size of the array");\par
+\par
+            size = Integer.parseInt(br.readLine());\par
+\par
+        int[] array = new int[size];\par
+\par
+        System.out.println("Enter array elements");\par
+\par
+        int i;\par
+\par
+        for (i = 0; i < array.length; i++) \{\par
+             array[i] = Integer.parseInt(br.readLine());\par
+\tab\}\par
+\par
+        System.out.println("The non repeated elements are ");\par
+\par
+        NoDuplicates(array);\par
+\par
+    \}\par
+\par
+\}\par
+/*\par
+cs1166@u5:~/Desktop$ java uniqueCount\par
+Enter the size of the array\par
+8\par
+Enter array elements\par
+2\par
+2\par
+3\par
+4\par
+5\par
+6\par
+6\par
+7\par
+The non repeated elements are \par
+3\par
+4\par
+5\par
+7\par
+*/\par
+\par
+\par
+}
+ 

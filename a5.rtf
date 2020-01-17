@@ -1,0 +1,377 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang16393{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.18362}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 import java.io.*;\par
+class InvalidException extends Exception\par
+\{\par
+    public InvalidException(String s)\par
+    \{\par
+        super(s);\par
+    \}\par
+\}\par
+class Processing\par
+\{\par
+    final int max_limit=20;\par
+    final  int min_limit=1;\par
+    final double min_bal=500;\par
+    \par
+    private  String name[]=new String[20];\par
+    private int accNo[]=new int[20];\par
+    private  String Branch[]=new String[20];\par
+    private double balamount[]=new double[20];\par
+    private int PAN[]=new int[20]\par
+    \par
+    static int totRec=0;\par
+    Processing()\par
+    \{\par
+    \tab for(int i=0;i<max_limit;i++)\par
+        \{\par
+            name[i]="";\par
+            accNo[i]=0;\par
+            Branch[i]="";\par
+            balamount[i]=0.0;\par
+\tab PAN[i]=0;\par
+        \}\par
+    \}\par
+    public void newEntry() \par
+    \{\par
+    \tab String str;\par
+         \par
+        int account;\par
+        double amount;\par
+        boolean permit;\par
+        permit=true;\par
+\par
+        if (totRec>max_limit)\par
+        \{\par
+        \tab System.out.println("\\n\\n\\nSorry we cannot admit you in our bank...We have reached the maximum possible customers\\n\\n\\n");\par
+            permit=false;\par
+        \}\par
+\par
+        if(permit = true) \par
+        \{\par
+             totRec++;      \par
+                           System.out.println("\\n\\n\\n=====SAVING NEW ENTRY=====");\par
+             try\par
+             \{\par
+            \tab  accNo[totRec]=totRec;                     System.out.println("Account Number :  "+accNo[totRec]);\par
+                     BufferedReader obj = new BufferedReader(new InputStreamReader(System.in));\par
+                  \par
+               \par
+                 System.out.print("Enter the name of the Customer : ");                 \par
+                 name[totRec]=obj.readLine();\par
+                 System.out.print("Enter Branch : ");                  \par
+                 Branch[totRec]=obj.readLine();\par
+\tab   System.out.print("Enter PAN number : ");                  \par
+                 PAN[totRec]=Integer.parseInt(obj.readLine());\par
+\par
+                 do\par
+                 \{\par
+                                \tab  System.out.print("Enter Initial  Amount to be deposited : ");\par
+                                      str=obj.readLine();\par
+                     \par
+                     balamount[totRec]=Double.parseDouble(str);\par
+                 \}\par
+                 while(balamount[totRec]<min_bal);      \par
+\par
+                 System.out.println("\\n\\n\\n");\par
+             \}\par
+             catch(Exception e)\par
+             \{\par
+            \tab  System.out.println("Exception in Entering a record.....");\par
+             \}\par
+        \}\par
+    \}\par
+    public void display() \par
+    \{     \par
+    \tab String str;\par
+        int account=0;\par
+        boolean valid=true;\par
+                           \par
+        System.out.println("\\n\\n=====DISPLAYING THE RECORDS=====\\n");\par
+        try\par
+        \{\par
+        \par
+            BufferedReader obj = new BufferedReader(new InputStreamReader(System.in));\par
+             System.out.print("Enter the account number for display record : ");\par
+             \par
+             \par
+            str=obj.readLine();\par
+            account=Integer.parseInt(str);\par
+             \par
+            \par
+            if (account<min_limit  || account>totRec)   \par
+            \{\par
+            \tab throw new InvalidException("Account Not Found Exception");\par
+                valid=false;\par
+            \}\par
+\par
+            if (valid==true)\par
+            \{     \par
+                System.out.println("\\n\\nAccount Number : "+accNo[account]);\par
+                System.out.println("Name : "+name[account]);\par
+                System.out.println("Account Type : "+Branch[account]);\par
+                System.out.println("Balance Amount : "+balamount[account]+"\\n\\n\\n");\par
+            \}\par
+        \}\par
+        catch(InvalidException e)\par
+        \{\par
+        \tab System.out.println("e.getMessage");\par
+        \}\par
+    \}\par
+    public void deposit()\par
+    \{\par
+        String str;\par
+        double amount;\par
+        int account;\par
+        boolean valid=true;\par
+        System.out.println("\\n\\n\\n=====DEPOSIT AMOUNT=====");\par
+              \par
+        try\par
+        \{\par
+        \tab BufferedReader obj = new BufferedReader(new InputStreamReader(System.in));\par
+\par
+            System.out.print("Enter Account No : ");             \par
+            str=obj.readLine();\par
+            account=Integer.parseInt(str);\par
+            if (account<min_limit || account>totRec)  \par
+            \{\par
+\tab             throw new InvalidException\{\par
+            \tab System.out.println("\\n\\n\\nInvalid Account Number \\n\\n");\par
+                valid=false;\par
+\tab             \}\par
+            \}\par
+           \par
+            if (valid==true)\par
+            \{\par
+                System.out.print("Enter Amount you want to Deposit  : ");\par
+                str=obj.readLine();\par
+                amount=Double.parseDouble(str);\par
+        \tab if(amount>50000)\par
+        \tab\{\par
+        \tab\tab throw new InvalidException\par
+        \tab\tab\{\par
+        \tab\tab\tab System.out.println("\\n\\nPANRequiredException\\n\\n");\par
+        \tab\tab\}\par
+        \tab\}\par
+\tab         else\{\par
+\par
+                balamount[account]=balamount[account]+amount;              \par
+                System.out.println("\\nAfter Updation...");\par
+                System.out.println("Account Number :  "+account);\par
+                System.out.println("Balance Amount :  "+balamount[account]+"\\n\\n\\n");\par
+            \}\par
+\par
+        \}\par
+        catch(InvalidException e)\par
+        \{\par
+        \tab System.out.println("Exception in Depositing record.....");\par
+        \}\par
+    \}\par
+    public void withdraw()\par
+    \{ \par
+    \tab String str;\par
+        \par
+    \tab double amount,checkamount;\par
+        int account;\par
+        boolean valid=true;\par
+        \par
+        System.out.println("\\n\\n\\n=====WITHDRAW MONEY=====");\par
+        try\par
+        \{\par
+            \par
+        \tab BufferedReader obj = new BufferedReader(new InputStreamReader(System.in));\par
+             \par
+        \tab\par
+            System.out.print("Enter the account number to deposit money : ");            \par
+            str=obj.readLine();\par
+            account=Integer.parseInt(str);\par
+\par
+              if (account<min_limit || account>totRec)  \par
+            \{\par
+                 System.out.println("\\n\\n\\nInvalid Account Number \\n\\n");\par
+                 valid=false;\par
+            \}\par
+\par
+            if (valid==true)\par
+            \{\par
+            \tab System.out.println("Balance is : "+balamount[account]);\par
+                System.out.print("Enter Amount you want to withdraw  : ");\par
+                str=obj.readLine();\par
+                amount=Double.parseDouble(str);\par
+            \}\par
+            if(balamount[account]-amount<0)\par
+            \{\par
+                throw new InvalidException\{\par
+                System.out.println("NotEnoughMoneyInAccountException");\par
+                \}\par
+            \}\par
+            else if(min_bal>balamount[account]-amount)\par
+            \{\par
+                throw new InvalidException\{\par
+                System.out.println("MinBalRequiredException");\par
+                \}\par
+            \}\par
+            else\par
+            \{\par
+                checkamount=balamount[account]-amount;\par
+\par
+                if(checkamount >= min_bal)\par
+                \{\par
+                \tab balamount[account]=checkamount;\par
+                      \par
+                    \par
+                    System.out.println("\\nAfter Updation...");\par
+                    System.out.println("Account Number :  "+account);\par
+                    System.out.println("Balance Amount :  "+balamount[account]+"\\n\\n\\n");\par
+                \}\par
+            \}\par
+        \}\par
+        \par
+        catch(InvalidException e)\par
+        \{\par
+        \tab System.out.println("Exception in Withdrawing record.....");\par
+        \}\par
+    \}\tab\tab\par
+\}\par
+\par
+public class  Bank\par
+\{\par
+    public static void main(String args[]) \par
+    \{\par
+        String str;\par
+        int choice;\par
+        choice=0;\par
+\par
+        Processing BW_obj = new Processing();\par
+        \par
+        do\par
+        \{\par
+        \tab\par
+        \tab System.out.println("Choose Your Choices ...");\par
+        \tab System.out.println("1) New Record Entry ");\par
+        \tab System.out.println("2) Display Record Details ");\par
+        \tab System.out.println("3) Deposit...");\par
+        \tab System.out.println("4) Withdraw...");\par
+        \tab System.out.println("5) Exit");\par
+        \tab System.out.print("Enter your choice :  ");\par
+        \tab  \par
+            try\par
+            \{\par
+            \tab\par
+            \tab BufferedReader obj = new BufferedReader(new InputStreamReader(System.in));\par
+                str=obj.readLine();\par
+                choice=Integer.parseInt(str);\par
+\par
+                switch(choice)\par
+                \{\par
+                \tab case 1 :\par
+                \tab\tab\par
+                \tab\tab BW_obj.newEntry();\par
+                        break;\par
+                            \par
+                \tab case 2 :\par
+                \tab\tab\par
+                \tab\tab BW_obj.display();\par
+                        break;\par
+                            \par
+                \tab case 3 : \par
+                \tab\tab\par
+                \tab\tab BW_obj.deposit();\par
+                        break;\par
+                           \par
+                \tab case 4 : \par
+                \tab\tab\par
+                        BW_obj.withdraw();\par
+                        break;\par
+                            \par
+                \tab case 5  :  \par
+                \tab\tab System.out.println("\\n\\n.....THANKS FOR VISITING.....");\par
+                        break;\par
+                        \par
+                \tab default : System.out.println("\\nInvalid Choice \\n\\n");\par
+                \}\par
+            \}\par
+            catch(Exception e)\par
+            \{\par
+            \tab System.out.println("Exception in Main....");\par
+            \}\par
+        \}\par
+        while(choice!=5);\par
+    \}\par
+\}\par
+***************************************************************************\par
+package myPack;\par
+public class CurrConverter\par
+\{\par
+    public void converter(Sring a,String b,String c)throws NumberFormatException\{\par
+        String from,to,amt;\par
+        from=a;\par
+        to=b;\par
+        amount=c;\par
+        double res\par
+        \par
+        try\{\par
+            double a=Double.parseDouble(amount);\par
+            if(from.equals("D")&&to.equals("R"))\par
+            \{\par
+                res=a*71.41;\par
+                System.out.println(res);\par
+            \}\par
+            if(from.equals("R")&&to.equals("D"))\par
+            \{\par
+                res=a*0.014;\par
+                System.out.println(res);\par
+            \}\par
+            if(from.equals("Y")&&to.equals("R"))\par
+            \{\par
+                res=a*.67;\par
+                System.out.println(res);\par
+            \}\par
+            if(from.equals("R")&&to.equals("Y"))\par
+            \{\par
+                res=a*1.50;\par
+                System.out.println(res);\par
+            \}\par
+            if(from.equals("E")&&to.equals("R"))\par
+            \{\par
+                res=a*78.93;\par
+                System.out.println(res);\par
+            \}\par
+            if(from.equals("R")&&to.equals("E"))\par
+            \{\par
+                res=a*0.013;\par
+                System.out.println(res);\par
+            \}\par
+        \}\par
+        catch(NumberFormatException e)\par
+        \{\par
+            e.printStackTrace();\par
+        \}\par
+            \par
+    \}\par
+\}\par
+////////////////////////////////////////////////////////////////////////////////////////////////\par
+import myPack.CurrConverter;\par
+import java.util.*;\par
+public class Test\par
+\{\par
+    public static void main(String args[])\par
+    \{\par
+        CurrConverter c=new CurrConverter();\par
+        Scanner in =new Scanner(System.in());\par
+        String t,f,a;\par
+        System.out.println("\\n\\n=========CHOICES=========\\n\\n");\par
+        System.out.println("\\n1.Dollar=D\\n2.Ruppee=R\\n3.Yen=Y\\n4.Euro=E\\n");\par
+        System.out.println("Enter what currency you want to convert from,using the above options")\par
+        t=in.next();\par
+        System.out.println("Enter what currency you want to convert to,using the above options")\par
+        f=in.next();\par
+        System.out.println("Enter the amount")\par
+        a=in.next();\par
+        System.out.println("AFTER CONVERTION......")\par
+        c.converter(t,f,a);\par
+    \}\par
+\}    \par
+\par
+}
+ 

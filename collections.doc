@@ -1,0 +1,263 @@
+import java.util.ArrayList;
+import java.util.*;
+public class collections{
+public static void main(String args[]){
+ArrayList<String> alist=new ArrayList<String>();
+Scanner in=new Scanner(System.in);
+System.out.println(CHOOSE :\n1.INSERT\n2.APPEND\n3.SEARCH\n4.DISPLAY\n5.List string\n6.Substring search\n7.Sort\n8.Remove particular element\n9.Replace\n10.Remove duplicate)
+int ch=Imt.nextInt();
+switch(ch)
+{
+	case 1:
+	{
+		System.out.println("Enter the number of words you wish to add");
+		int n=in.nextInt();
+		
+		for(inti=0;i<n;i++)
+		{
+			String st=in.next();
+			alist.add(st);
+		} 
+		break;
+	}
+	case 2:
+	{
+		System.out.println("enter the string to append");
+		String st=in.next();
+		alist.append(st);
+		break;
+	}
+	case 3:
+	{
+		System.out.println("Enter the string to be searched");
+		String st=in.next();
+		boolean f=alist.contains(st);
+		if(f){
+			System.out.println("present");
+		}
+		else
+			Systemout.println("mot present");
+		break;
+	}
+	case 4:
+	{
+		for (String str : alist) {
+			System.out.println(str);
+		}
+		break;
+	}
+	case 5:
+	{
+		System.out.println("Enter the word whose index is to be found");
+		String st=in.next();
+		int pos =arr.indexOf(st);
+		System.out.println(pos);
+		break;
+	}
+	case 6:
+	{
+		alist.sort();
+		for (String str : alist) {
+			System.out.println(str);
+		}
+		break;
+	}
+	case 7:
+	{
+		System.out.println("Enter the word whose index is to be found");
+		String st=in.next();
+		alist.remove(st);
+		System.out.println("Element has been removed");
+		for (String str : alist) {
+			System.out.println(str);
+		}
+		break;
+	}
+	case 8:
+	{	
+		System.out.println("Enter the string you wish to replace and then the string you wish to change to");
+		String st=in.next();
+		String str=in.next();
+		int index = list.indexOf(st);
+        list.set(index,str);
+        for (String str : alist) {
+			System.out.println(str);
+		}
+		break;
+	}
+	case 10:
+	{
+		ArrayList<String> newlist=new ArrayList<String>();
+		for (String element : alist) {
+            if (!aList.contains(element)) { 
+                newList.add(element); 
+            } 
+        } 
+        for (String str : newlist) {
+			System.out.println(str);
+		}
+		break;
+	}
+	default:
+	System.out.println("INVALID CHOICE");
+}
+}
+}	
+
+import java.util.ArrayList;
+import java.util.*;
+public class c1{
+	public static void main(String args[]){
+		List<String> list1 = new ArrayList<String>(Arrays.asList("A", "B", "C"));
+         List<String> list2 = new ArrayList<String>(Arrays.asList("B", "C", "D", "E", "F"));
+Scanner in=new Scanner(System.in);
+System.out.println("Enter the number of words you wish to add to list 1");
+		int n=in.nextInt();
+		
+		for(int i=0;i<n;i++)
+		{
+			String st=in.next();
+			list1.add(st);
+		} 
+System.out.println("Enter the number of words you wish to add to list 2");
+		int m=in.nextInt();
+		
+		for(int i=0;j<m;j++)
+		{
+			String st=in.next();
+			list2.add(st);
+		} 
+
+System.out.println(CHOOSE :\n1.MERGE AND UNION\n3.INTERSECTION\n4.COMPARE);
+int ch=Imt.nextInt();
+switch(ch)
+{
+	case 1:
+	{
+		list1.addAll(list2) ;
+
+          System.out.println(list1);
+          System.out.println(list2); 
+		break;
+	}
+	case 2:
+	{
+		list1.retainAll(list2) ;
+
+          System.out.println(list1);
+          System.out.println(list2);
+		break;
+	}
+	case 3:
+	{
+		System.out.println("Equality check");
+		boolean isEqual = listOne.equals(listTwo);      
+        System.out.println(isEqual);
+        list1.removeAll(list2);
+		break;
+	}
+	
+	default:
+	System.out.println("INVALID CHOICE");
+}
+}
+}	
+
+
+import java.util.ArrayList;
+import java.util.*;
+public class c2{
+	public static void main(String args[])
+	{
+		Scanner in =new Scanner(System.in);
+		//DoublyLinkedListImpl<Integer> dll = new DoublyLinkedListImpl<Integer>();
+		LinkedList<Integer> object = new LinkedList<Integer>();
+		System.out.println(CHOOSE :\n1.INSERT ON BOTH SIDES\n2.DELETE ON BOTH SIDES\n3.INSERT AT PARTICLUAR POSITION\n4.DELETE AT PARTICULAR POSITION\n5.SERACH\n6.DISPLAY IN BOTH ORDER\n7.SORT\n8.REPLACE\n9.REMOVE DUPLICATE\n10.Remove duplicate)
+		int ch=Imt.nextInt();
+		switch(ch)
+		{
+			case 1:
+			{
+				System.out.println("ENTER THE ELEMENT TO BE ADDED");
+				int n=in.nextInt();
+				object.addFirst(n);
+				object.addlast(n);
+				break;
+			}
+			case 2:
+			{
+				object.removeFirst();
+				object.removeLast();
+				System.out.println(object);
+				break;
+			}
+			case 3:
+			{
+				System.out.println("ENTER THE ELEMENT TO BE ADDED AND THE INDEX");
+				int n=in.nextInt();
+				int i=in.nextInt();
+				object.add(i,n);
+				break;
+			}
+			case 4:
+			{
+				System.out.println("ENTER THE INDEX to delete");
+				int i=in.nextInt();
+				object.remove(i);
+				break;
+			}
+			case 5:
+			{
+				System.out.println("Enter the element to be serached");
+				int i=in.nextInt();
+				int i=object.indexOf(n);
+				System.out.println(i);
+				break;
+			}
+			case 6:
+			{
+				Iterator iter = object.iterator();
+      while (iter.hasNext()) {
+         System.out.println(iter.next());
+        while (iter.hasPrevious()){
+      System.out.println(iter.previous());
+    }
+			}
+			case 7:
+			{
+				object.sort();
+				System.out.println(object);
+				break;
+			}
+			case 8:
+			{
+				System.out.println("Enter the element you wish to replace and then the string you wish to change to");
+		int st=in.next();
+		int str=in.next();
+		int index = object.indexOf(st);
+        object.set(index,str);
+        for (int str : object) {
+			System.out.println(str);
+		}
+		break;}
+		case 9:{
+			LinkedList<Integer> newlist=new LinkedList<>();
+		for (int element : object) {
+            if (!object.contains(element)) { 
+                newList.add(element); 
+            } 
+        } 
+        for (int str : newlist) {
+			System.out.println(str);
+		}
+		break;
+	}
+	default:
+	System.out.println("INVALID CHOICE");
+			}
+		}
+
+		}
+	}
+
+}

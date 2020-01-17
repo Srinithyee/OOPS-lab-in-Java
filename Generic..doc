@@ -1,0 +1,234 @@
+﻿class Generic{
+
+public static <T extends Comparable<T>> T max(T... elements) {
+        T max = elements[0];
+        for (T element : elements) {
+            if (element.compareTo(max) > 0) {
+                max = element;
+            }
+        }
+        return max;
+    }
+
+public static void main(String[] args) {
+       System.out.println("Integer Max: " + max(Integer.valueOf(100), Integer.valueOf(156), Integer.valueOf(876), Integer.valueOf(263), Integer.valueOf(456), Integer.valueOf(781), Integer.valueOf(4543)));
+       System.out.println("Double Max: " + max(Double.valueOf(53.6), Double.valueOf(7.84), Double.valueOf(2.159), Double.valueOf(183.6), Double.valueOf(150.25), Double.valueOf(181.60401)));
+       System.out.println("String Max: " + max("Tajmahal", "EiffelTower", "HangingGarden", "PyramidofGiza", "GrandCanyon", "GreatBarrierReef", "GreatWallofChina", "Vienna", "RioDEGenerio"));
+       System.out.println("Boolean Max: " + max(Boolean.TRUE, Boolean.FALSE));
+       System.out.println("Byte Max: " + max(Byte.MIN_VALUE, Byte.MAX_VALUE));
+   }
+   }
+   /*cs1166@u5:~/Desktop$ java Generic
+Integer Max: 456
+Double Max: 18.6001
+String Max: Strawberry
+Boolean Max: true
+Byte Max: 127
+cs1166@u5:~/Desktop$ java Generic
+Integer Max: 4543
+Double Max: 183.6
+String Max: Vienna
+Boolean Max: true
+Byte Max: 127
+*/
+
+******************************************************************
+import java.io.*;
+ import java.util.*;
+   
+   public class GenericStack <T> {
+      private ArrayList<T> stack = new ArrayList<T> ();
+      private int top = 0;
+   
+      public int size () { return top; }
+   
+      public void push (T item) {
+        stack.add (top++, item);
+     }
+  
+     public T pop () {
+        return stack.remove (--top);
+     }
+  
+     public static void main (String[] args)throws IOException {
+     	BufferedReader in =new BufferedReader(new InputStreamReader(System.in));
+     	int i;
+     	System.out.println("==========CHOOSE FROM THE FOLLOWING DATA TYPES==========");
+     	System.out.println("1.INTEGER\n2.DOUBLE\n3.STRING");
+     	int ch=Integer.parseInt(in.readLine());
+     	switch(ch)
+     	{
+     		case 1:
+     		{
+        GenericStack<Integer> s = new GenericStack<Integer> ();
+        System.out.println("ENTER THE NUMBER OF ELEMENTS TO BE PUSHED");
+        int n=Integer.parseInt(in.readLine());
+        for(i=0;i<n;i++)
+        {
+        	int x=Integer.parseInt(in.readLine());
+        	s.push(x);
+        }
+        System.out.println("Enter 1 to pop and any other to end");
+        int c=Integer.parseInt(in.readLine());
+        if(c==1)
+        {
+        int k = s.pop ();
+        System.out.format ("%4d%n", k);
+        }
+        break;
+     		}
+     		
+     		case 2:
+     		{
+        GenericStack<Double> s = new GenericStack<Double> ();
+        System.out.println("ENTER THE NUMBER OF ELEMENTS TO BE PUSHED");
+        int n=Integer.parseInt(in.readLine());
+        for(i=0;i<n;i++)
+        {
+        	double x=Double.parseDouble(in.readLine());
+        	s.push(x);
+        }
+        System.out.println("Enter 1 to pop and any other to end");
+        int c=Integer.parseInt(in.readLine());
+        if(c==1)
+        {
+        double k = s.pop ();
+        System.out.format ("%4f%n", k);
+        }
+        break;
+        	}
+        	
+        	case 3:
+        	{
+        GenericStack<String> s = new GenericStack<String> ();
+        System.out.println("ENTER THE NUMBER OF ELEMENTS TO BE PUSHED");
+        int n=Integer.parseInt(in.readLine());
+        for(i=0;i<n;i++)
+        {
+        	String x=in.readLine();
+        	s.push(x);
+        }
+        System.out.println("Enter 1 to pop and any other to end");
+        int c=Integer.parseInt(in.readLine());
+        if(c==1)
+        {
+        String k = s.pop ();
+        System.out.format ("%4s%n", k);
+        }
+        break;
+        	}
+  }
+  }
+  }
+  /*==========CHOOSE FROM THE FOLLOWING DATA TYPES==========
+1.INTEGER
+2.DOUBLE
+3.STRING
+1
+ENTER THE NUMBER OF ELEMENTS TO BE PUSHED
+4
+1
+3
+5
+7
+Enter 1 to pop and any other to end
+1
+   7
+cs1166@u5:~/Desktop$ java GenericStack
+==========CHOOSE FROM THE FOLLOWING DATA TYPES==========
+1.INTEGER
+2.DOUBLE
+3.STRING
+2
+ENTER THE NUMBER OF ELEMENTS TO BE PUSHED
+3
+12.4
+23.6
+45.9
+Enter 1 to pop and any other to end
+1
+45.900000
+cs1166@u5:~/Desktop$ java GenericStack
+==========CHOOSE FROM THE FOLLOWING DATA TYPES==========
+1.INTEGER
+2.DOUBLE
+3.STRING
+3
+ENTER THE NUMBER OF ELEMENTS TO BE PUSHED
+4
+apple 
+orange
+banana
+dates
+Enter 1 to pop and any other to end
+1
+dates
+*/
+*******************************************************************************
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+
+public class sort1{
+
+    private <E> void swap(E[] a, int i, int j) {
+        if (i != j) {
+            E temp = a[i];
+            a[i] = a[j];
+            a[j] = temp;
+        }
+    }
+
+    public <E extends Comparable<E>> void selectionSort(E[] a) {
+        for (int i = 0; i < a.length - 1; i++) {
+            
+            int smallest = i;
+            for (int j = i + 1; j < a.length; j++) {
+                if (a[j].compareTo(a[smallest])<=0) {
+                    smallest = j;
+                }
+            }
+
+            swap(a, i, smallest);  
+        }
+    }
+
+    public static void main(String[] args){
+        sort1 firstsort = new sort1();
+
+        Integer[] arr ={23,4,6,56,89,123,59,43};
+        System.out.println("before sorting int: "+ Arrays.toString(arr));
+        firstsort.selectionSort(arr);
+        System.out.println("After sorting int : "+Arrays.toString(arr));
+         String[] arr1= {"apple","queen","baby","ssn","computer","engineering"};
+         System.out.println("before sorting String: "+ Arrays.toString(arr1));
+         firstsort.selectionSort(arr1);
+         System.out.println("After sorting String : "+Arrays.toString(arr1));
+         Character[] arr2= {'a','f','t','m','u'};
+         System.out.println("before sorting char: "+ Arrays.toString(arr2));
+         firstsort.selectionSort(arr2);
+         System.out.println("After sorting char : "+Arrays.toString(arr2));
+         Double[] arr3= {12.45,67.87,98.34,65.23,153.755};
+         System.out.println("before sorting double: "+ Arrays.toString(arr3));
+         firstsort.selectionSort(arr3);
+         System.out.println("After sorting double : "+Arrays.toString(arr3));
+    }
+}
+/*cs1166@u5:~/Desktop$ javac sort1.java
+cs1166@u5:~/Desktop$ java sort1
+before sorting int: [23, 4, 6, 56, 89, 123, 59, 43]
+After sorting int : [4, 6, 23, 43, 56, 59, 89, 123]
+before sorting String: [apple, queen, baby, ssn, computer, engineering]
+After sorting String : [apple, baby, computer, engineering, queen, ssn]
+before sorting char: [a, f, t, m, u]
+After sorting char : [a, f, m, t, u]
+before sorting double: [12.45, 67.87, 98.34, 65.23, 153.755]
+After sorting double : [12.45, 65.23, 67.87, 98.34, 153.755]
+*/
+****************************************************************************************************************************************************************
+
+
+  
+
+
